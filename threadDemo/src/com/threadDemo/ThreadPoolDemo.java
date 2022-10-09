@@ -10,6 +10,7 @@ import java.util.concurrent.*;
  */
 public class ThreadPoolDemo {
     public static void main(String[] args) {
+        // HashSet
         /**
          * jdk提供的线程池,底层的任务队列最大值为int的最大值，在池中线程不足时会出现oom（内存溢出）
          */
@@ -46,6 +47,7 @@ public class ThreadPoolDemo {
                 Executors.defaultThreadFactory(),
                 new ThreadPoolExecutor.AbortPolicy());
         try {
+
             for (int i = 0; i <=11; i++) {
                 threadPool.execute(() -> {
                     System.out.println("当前线程= " + Thread.currentThread().getName());

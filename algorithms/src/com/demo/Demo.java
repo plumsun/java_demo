@@ -39,7 +39,7 @@ public class Demo {
         int i = a.intValue();
         HashMap stringHashMap = new HashMap<>(20);
         int size = stringHashMap.size();
-        stringHashMap.
+        // stringHashMap
         System.out.println("size = " + size);
     }
 }
