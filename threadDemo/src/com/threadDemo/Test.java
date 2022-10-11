@@ -13,10 +13,15 @@ import java.util.regex.Pattern;
 public class Test implements Cloneable {
     private String id;
     private String name;
+    private Object obj;
 
-    public Test(String id,String name) {
+    public Test() {
+    }
+
+    public Test(String id, String name, Object obj) {
         this.id = id;
-        this.name=name;
+        this.name = name;
+        this.obj = obj;
     }
 
     public String getId() {
@@ -27,22 +32,42 @@ public class Test implements Cloneable {
         this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Object getObj() {
+        return obj;
+    }
+
+    public void setObj(Object obj) {
+        this.obj = obj;
+    }
+
     @Override
     public String toString() {
         return "Test{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
+                ", obj=" + obj +
                 '}';
     }
 
-
     public static void main(String[] args) throws Exception {
+        HashMap o = (HashMap)test();
 
+        Object pk = o.get("pk");
+
+        System.out.println("pk = " + pk);
 
         ArrayList<Test> list1 = new ArrayList<>();
         ArrayList<Test> list2 = new ArrayList<>();
-        list1.add(new Test("1","li"));
-        list1.add(new Test("2","l"));
+        list1.add(new Test());
+        list1.add(new Test());
         Collections.copy(list1,list2);
         // BeanUtilsBean.getInstance().copyProperties(dest, orig);
         System.out.println("list2 = " + list2);
@@ -58,9 +83,9 @@ public class Test implements Cloneable {
     //Steam流
     public void testObj(){
         List<Test> tests = new ArrayList<>();
-        tests.add(new Test("1","123"));
-        tests.add(new Test("4","123"));
-        tests.add(new Test("3","123"));
+        tests.add(new Test());
+        tests.add(new Test());
+        tests.add(new Test());
         // tests.stream().map(data -> data.getId()).sorted((o1, o2) -> o1.compareTo(o2)).forEach(System.out::println);
         tests.stream().map(Test::getId).forEach(System.out::println);
     }
@@ -89,17 +114,20 @@ public class Test implements Cloneable {
         level 回文数
         ana,n.aba|n%ana
      */
-    public void test(){
+    public static Object test(){
         String str = "hello";
         String s = "ll";
         int i = str.indexOf(s);
         System.out.println("i = " + i);
         HashSet<Object> set = new HashSet<>();
-        set.add();
         ArrayList<Object> list = new ArrayList<>();
-        list.get();
         HashMap<Object, Object> map = new HashMap<>();
-        map.get();
+        map.put("data",list);
+        map.put("pk","1");
+        System.out.println("map = " + map);
+        Test test = new Test();
+        test.setObj(map);
+        return test;
     }
 
     //替换字符串中的特殊字符
