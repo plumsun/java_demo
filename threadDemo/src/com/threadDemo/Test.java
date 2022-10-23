@@ -57,12 +57,9 @@ public class Test implements Cloneable {
                 '}';
     }
 
+
     public static void main(String[] args) throws Exception {
-        HashMap o = (HashMap)test();
 
-        Object pk = o.get("pk");
-
-        System.out.println("pk = " + pk);
 
         ArrayList<Test> list1 = new ArrayList<>();
         ArrayList<Test> list2 = new ArrayList<>();
