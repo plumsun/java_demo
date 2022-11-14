@@ -14,6 +14,7 @@ public class Test implements Cloneable {
     private String id;
     private String name;
     private Object obj;
+    private List<String> objects;
 
     public Test() {
     }
@@ -48,12 +49,27 @@ public class Test implements Cloneable {
         this.obj = obj;
     }
 
+    public List<String> getObjects() {
+        return objects;
+    }
+
+    public void setObjects(List<String> objects) {
+        this.objects = objects;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Test test = (Test) obj;
+        return objects.equals(test.getObjects());
+    }
+
     @Override
     public String toString() {
         return "Test{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", obj=" + obj +
+                ", objects=" + objects +
                 '}';
     }
 
@@ -76,6 +92,8 @@ public class Test implements Cloneable {
         // CopyOnWriteArrayList
         // a();
     }
+
+
 
     //Steam流
     public void testObj(){
