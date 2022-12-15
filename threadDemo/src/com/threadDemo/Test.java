@@ -157,4 +157,32 @@ public class Test implements Cloneable {
         String replaceAll = str.replaceAll(regEx, "");
         System.out.println(replaceAll);
     }
+
+    /**
+     * 集合截取测试
+     */
+    @org.junit.Test
+    public void test1(){
+        ArrayList<String> strings = new ArrayList<>();
+        Collections.addAll(strings,"1","2","3","1","2","3","1","2","3","1","2","3");
+        Map<Integer,List<String>> map = this.sub(strings);
+        System.out.println("sub = " + map);
+    }
+
+
+    private Map<Integer,List<String>> sub(List<String> coll) {
+        Map<Integer,List<String>> result = new HashMap<>();
+        if (coll.size() > 10) {
+            int i = coll.size() / 10;
+            for (int y = 0; y < i; y++) {
+                List<String> sub = coll.subList(y * 10, (y + 1) * 10);
+                result.put(y,sub);
+            }
+            List<String> sub = coll.subList(i * 10, coll.size());
+            if(sub.size()!=0){
+                result.put(i,sub);
+            }
+        }else result.put(0,coll);
+        return result;
+    }
 }

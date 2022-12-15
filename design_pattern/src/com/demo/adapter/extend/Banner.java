@@ -1,6 +1,8 @@
 package com.demo.adapter.extend;
 
 /**
+ * adapter
+ *
  * @author LiHaoHan
  * @date 2022/12/12
  */

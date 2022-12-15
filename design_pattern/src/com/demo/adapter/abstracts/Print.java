@@ -1,12 +1,13 @@
 package com.demo.adapter.abstracts;
 
-import java.util.Optional;
 
 /**
+ * target
+ *
  * @author LiHaoHan
  * @date 2022/12/12
  */
 public abstract class Print {
-    abstract void printWeak();
-    abstract void printStrong();
+   public abstract void printWeak();
+   public abstract void printStrong();
 }

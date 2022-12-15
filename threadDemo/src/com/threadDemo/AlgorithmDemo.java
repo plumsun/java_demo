@@ -2,10 +2,7 @@ package com.threadDemo;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * @author LiHaoHan
@@ -20,19 +17,19 @@ public class AlgorithmDemo {
      *
      */
     @Test
-    public void test(){
-        int[] nums = {2, 7, 11, 15};
-        int target = 9;
-        int length = nums.length-1;
-        for (int i = 0; i < length; ++i) {
-            for (int y = i + 1; y < length; ++y) {
-                System.out.println("y = " + y);
-                if (nums[i] + nums[y] == target) {
-                    System.out.println("index = " + Arrays.toString(new int[]{i, y}));
-                }
+    public void test1(){
+       twoSum(null,0);
+    }
+
+    public int[] twoSum(int[] nums, int target) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; ++i) {
+            if (map.containsKey(target - nums[i])) {
+                return new int[]{map.get(target - nums[i]), i};
             }
+            map.put(nums[i], i);
         }
-
-
+        return new int[]{0};
     }
 }
+

@@ -1,6 +1,8 @@
 package com.demo.adapter.abstracts;
 
 /**
+ * adapter
+ *
  * @author LiHaoHan
  * @date 2022/12/12
  */
@@ -13,12 +15,12 @@ public class PrintBanner extends Print {
     }
 
     @Override
-    void printWeak() {
+    public void printWeak() {
         banner.showWithAster();
     }
 
     @Override
-    void printStrong() {
+    public void printStrong() {
         banner.showWithAster();
     }
 }
