@@ -2,7 +2,6 @@ package com.demo.factory.idcard;
 
 import com.demo.factory.framework.Product;
 
-import java.io.InputStream;
 import java.util.Objects;
 
 /**
