@@ -81,11 +81,11 @@ public class Test implements Cloneable {
         ArrayList<Test> list2 = new ArrayList<>();
         list1.add(new Test());
         list1.add(new Test());
-        Collections.copy(list1,list2);
+        Collections.copy(list1, list2);
         // BeanUtilsBean.getInstance().copyProperties(dest, orig);
         System.out.println("list2 = " + list2);
         Test test = list1.get(1);
-        Test clone =(Test) test.clone();
+        Test clone = (Test) test.clone();
         clone.setId("3");
         System.out.println("tests = " + list1);
         System.out.println("clone = " + clone);
@@ -94,9 +94,8 @@ public class Test implements Cloneable {
     }
 
 
-
     //Steam流
-    public void testObj(){
+    public void testObj() {
         List<Test> tests = new ArrayList<>();
         tests.add(new Test());
         tests.add(new Test());
@@ -106,22 +105,23 @@ public class Test implements Cloneable {
     }
 
     //值传递和引用传递测试
-    public static void a(){
+    public static void a() {
         HashMap<Object, Object> map = new HashMap<>();
-        map.put(1,1);
+        map.put(1, 1);
         Integer integer = new Integer(1);
         Integer a = 3;
         String str = "list1";
         String str2 = new String("list2");
-        b(integer,map,str,str2);
-        b(a,map,str,str2);
-        System.out.println(a+" "+integer+" "+map.get(1)+str+str2);
+        b(integer, map, str, str2);
+        b(a, map, str, str2);
+        System.out.println(a + " " + integer + " " + map.get(1) + str + str2);
     }
-    public static void b(Integer integer,HashMap map,String str,String str2){
+
+    public static void b(Integer integer, HashMap map, String str, String str2) {
         str = "list3";
         str2 = new String("list3");
-        integer=2;
-        map.put(1,2);
+        integer = 2;
+        map.put(1, 2);
     }
 
 
@@ -129,7 +129,7 @@ public class Test implements Cloneable {
         level 回文数
         ana,n.aba|n%ana
      */
-    public static Object test(){
+    public static Object test() {
         String str = "hello";
         String s = "ll";
         int i = str.indexOf(s);
@@ -137,8 +137,8 @@ public class Test implements Cloneable {
         HashSet<Object> set = new HashSet<>();
         ArrayList<Object> list = new ArrayList<>();
         HashMap<Object, Object> map = new HashMap<>();
-        map.put("data",list);
-        map.put("pk","1");
+        map.put("data", list);
+        map.put("pk", "1");
         System.out.println("map = " + map);
         Test test = new Test();
         test.setObj(map);
@@ -147,7 +147,7 @@ public class Test implements Cloneable {
 
     //替换字符串中的特殊字符
     public static void testRegex() throws Exception {
-        String str="ana,n.aba|n%ana";
+        String str = "ana,n.aba|n%ana";
         String regEx = "[,`~!@#$%^&*()+=|{}':;'\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]|\n|\r|\t";
         Pattern p = Pattern.compile(regEx);
         Matcher m = p.matcher(str);
@@ -162,27 +162,27 @@ public class Test implements Cloneable {
      * 集合截取测试
      */
     @org.junit.Test
-    public void test1(){
+    public void test1() {
         ArrayList<String> strings = new ArrayList<>();
-        Collections.addAll(strings,"1","2","3","1","2","3","1","2","3","1","2","3");
-        Map<Integer,List<String>> map = this.sub(strings);
+        Collections.addAll(strings, "1", "2", "3", "1", "2", "3", "1", "2", "3", "1", "2", "3");
+        Map<Integer, List<String>> map = this.sub(strings);
         System.out.println("sub = " + map);
     }
 
 
-    private Map<Integer,List<String>> sub(List<String> coll) {
-        Map<Integer,List<String>> result = new HashMap<>();
+    private Map<Integer, List<String>> sub(List<String> coll) {
+        Map<Integer, List<String>> result = new HashMap<>();
         if (coll.size() > 10) {
             int i = coll.size() / 10;
             for (int y = 0; y < i; y++) {
                 List<String> sub = coll.subList(y * 10, (y + 1) * 10);
-                result.put(y,sub);
+                result.put(y, sub);
             }
             List<String> sub = coll.subList(i * 10, coll.size());
-            if(sub.size()!=0){
-                result.put(i,sub);
+            if (sub.size() != 0) {
+                result.put(i, sub);
             }
-        }else result.put(0,coll);
+        } else result.put(0, coll);
         return result;
     }
 }

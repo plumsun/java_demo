@@ -24,5 +24,10 @@ public class Test {
             Book next = iterator.next();
             System.out.println("next = " + next);
         }
+
+        Book book1 = new Book("数学");
+        Book book2 = new Book("数学");
+        boolean equals = book1.equals(book2);
+        System.out.println(equals);
     }
 }
