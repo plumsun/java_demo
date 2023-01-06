@@ -17,8 +17,8 @@ public class AlgorithmDemo {
      * 两数之和
      */
     @Test
-    public void test1(){
-       twoSum(null,0);
+    public void test1() {
+        twoSum(null, 0);
     }
 
     public int[] twoSum(int[] nums, int target) {
@@ -34,26 +34,53 @@ public class AlgorithmDemo {
 
 
     /**
-     *  括号匹配深度
+     * 括号匹配深度
      */
     @Test
-    public void test(){
+    public void test() {
         int i = bracketNum("((()))");
         System.out.println("i = " + i);
     }
 
-    private int bracketNum(String str){
+    private int bracketNum(String str) {
         int num = 0;
         int count = 0;
         for (int i = 0; i < str.length(); i++) {
-            if (str.charAt(i)=='(')
+            if (str.charAt(i) == '(')
                 num++;
             else
                 num--;
-            count = Math.max(num,count);
+            count = Math.max(num, count);
         }
         return count;
     }
 
+    /**
+     * 给定一个字符串 s ，请你找出其中不含有重复字符的 最长子串 的长度
+     *
+     * @param s
+     * @return
+     */
+    @Test
+    public void lengthOf() {
+        int i = lengthOfLongestSubstring("pwwkew");
+        System.out.println("i = " + i);
+    }
+
+
+    public int lengthOfLongestSubstring(String s) {
+        int start = 0;
+        int end = 0;
+        HashMap<Character, Integer> map = new HashMap<>();
+        for (int i = 0; i < s.length(); i++) {
+            char str = s.charAt(i);
+            if (map.containsKey(str)) {
+                end = Math.max(end, map.get(str) + 1);
+            }
+            map.put(str, i);
+            start = Math.max(start, i - end + 1);
+        }
+        return start;
+    }
 }
 
