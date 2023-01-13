@@ -1,4 +1,4 @@
-package com.study;
+package com.study.sparsearray;
 
 import java.io.*;
 import java.util.Arrays;
