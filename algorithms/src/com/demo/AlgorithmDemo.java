@@ -2,7 +2,9 @@ package com.demo;
 
 import org.junit.Test;
 
-import java.util.HashMap;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * @author LiHaoHan
@@ -81,6 +83,123 @@ public class AlgorithmDemo {
             start = Math.max(start, i - end + 1);
         }
         return start;
+    }
+
+    /**
+     * 寻找两个正序数组的中位数
+     */
+    @Test
+    public void findMedian() {
+        int[] nums1 = {1, 3};
+        int[] nums2 = {2, 4};
+        double d = findMedianSortedArrays(nums1, nums2);
+        System.out.println("d = " + d);
+    }
+
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        List<Integer> list = IntStream.concat(Arrays.stream(nums1), Arrays.stream(nums2)).boxed().sorted().collect(Collectors.toList());
+        int size = list.size();
+        int index = (size / 2);
+        double integer = list.get(index).doubleValue();
+        if (size % 2 == 0) {
+            integer = (list.get(index - 1).doubleValue() + integer) / 2;
+        }
+        return integer;
+    }
+
+    /**
+     * 给你一个字符串 s，找到 s 中最长的回文子串。
+     * <p>
+     * 如果字符串的反序与原始字符串相同，则该字符串称为回文字符串。
+     */
+    @Test
+    public void longestPalindrome() {
+    }
+
+    /**
+     * 给你一个字符串s和一个字符规律p，请你来实现一个支持 '.'和'*'的正则表达式匹配。
+     * <p>
+     * '.' 匹配任意单个字符
+     * '*' 匹配零个或多个前面的那一个元素
+     */
+    @Test
+    public void isMatch() {
+        String s = "cab";
+        String s1 = "ab";
+        System.out.println(Arrays.toString(s.split("c")));
+        char[] array = s.toCharArray();
+        for (int i = 0; i < array.length; i++) {
+            System.out.println(i);
+        }
+    }
+
+    public boolean isMatch(String s, String p) {
+        boolean flag = false;
+        final String all = "*";
+        final String part = ".";
+        HashMap<Integer, String> map = new HashMap<>();
+        if (!p.contains(all) || !p.contains(part)) {
+            return flag;
+        }
+        int index = p.indexOf(part);
+        String[] split = p.split("");
+        StringBuilder builder1 = new StringBuilder(s);
+        StringBuilder builder2 = new StringBuilder(p);
+        if (index != -1) {
+            for (int i = 0; i < split.length; i++) {
+                if (part.equals(split[i])) {
+                    builder1.deleteCharAt(i);
+                    builder2.deleteCharAt(i);
+                }
+                if(all.equals(split[i])){
+                    builder2.deleteCharAt(i);
+                    map.put(i,all);
+                }
+            }
+
+        }
+        Set<Integer> set = map.keySet();
+        int size = set.size();
+        if(size==0){
+            return builder1.toString().equals(builder2.toString());
+        }
+        set.forEach(i -> {
+                    if (i == p.length() - 1&&size==1) {
+                        builder1.toString().startsWith(builder2.toString());
+                    }
+                    if (i == 0&&size==1) {
+                        builder1.toString().endsWith(builder2.toString());
+                    }
+                    if (i < p.length() - 1 && i > 0) {
+                        String[] strings = builder2.toString().split("");
+
+                    }
+                }
+        );
+        return flag;
+    }
+
+    @Test
+    public void isValid(){
+        boolean valid = isValid("(){}");
+        System.out.println("valid = " + valid);
+    }
+
+    public boolean isValid(String s) {
+        if(s.isEmpty())
+            return true;
+        Stack<Character> stack=new Stack<>();
+        for(char c:s.toCharArray()){
+            if(c=='(')
+                stack.push(')');
+            else if(c=='{')
+                stack.push('}');
+            else if(c=='[')
+                stack.push(']');
+            else if(stack.empty()||c!=stack.pop())
+                return false;
+        }
+        return stack.empty();
     }
 }
 
