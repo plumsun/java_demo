@@ -5,6 +5,8 @@ import com.demo.factory.framework.Product;
 import java.util.Objects;
 
 /**
+ * 资源类
+ *
  * @author LiHaoHan
  * @date 2022/12/16
  */
@@ -13,9 +15,9 @@ public class IDCard extends Product {
     private String owner;
     Integer number;
 
-    public IDCard(String owner,Integer number) {
+    public IDCard(String owner, Integer number) {
         this.owner = owner;
-        this.number= number;
+        this.number = number;
         System.out.println("create");
     }
 

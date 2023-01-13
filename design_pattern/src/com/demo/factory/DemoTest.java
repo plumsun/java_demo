@@ -4,6 +4,8 @@ import com.demo.factory.framework.Product;
 import com.demo.factory.idcard.IDCardFactory;
 import org.junit.Test;
 
+import java.security.NoSuchAlgorithmException;
+
 /**
  * @author LiHaoHan
  * @date 2022/12/16
@@ -11,7 +13,7 @@ import org.junit.Test;
 public class DemoTest {
 
     @Test
-    public void test(){
+    public void test() throws NoSuchAlgorithmException {
         IDCardFactory factory = new IDCardFactory();
         Product product1 = factory.create("1");
         Product product2 = factory.create("2");

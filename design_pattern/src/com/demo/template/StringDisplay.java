@@ -1,6 +1,5 @@
 package com.demo.template;
 
-import sun.util.locale.provider.AvailableLanguageTags;
 
 /**
  * @author LiHaoHan

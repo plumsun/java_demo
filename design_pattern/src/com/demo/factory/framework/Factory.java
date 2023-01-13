@@ -6,11 +6,29 @@ package com.demo.factory.framework;
  */
 public abstract class Factory {
 
-    public abstract Product createProduct(String owner);
-    public abstract void registerProduct(Product product);
+    /**
+     * 资源类创建
+     *
+     * @param owner
+     * @return
+     */
+    protected abstract Product createProduct(String owner);
+
+    /**
+     * 注册资源类
+     *
+     * @param product
+     */
+    protected abstract void registerProduct(Product product);
 
 
-    public final Product create(String owner){
+    /**
+     * 工厂创建资源类流程
+     *
+     * @param owner
+     * @return
+     */
+    public final Product create(String owner) {
         Product product = createProduct(owner);
         registerProduct(product);
         return product;
