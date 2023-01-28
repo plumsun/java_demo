@@ -9,6 +9,10 @@ import java.util.HashMap;
  */
 public class StringUtils {
 
+    private StringUtils() {
+        throw new IllegalStateException("Utility class");
+    }
+
     /**
      * 求括号深度
      *

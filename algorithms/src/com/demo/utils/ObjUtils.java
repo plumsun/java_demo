@@ -6,5 +6,9 @@ package com.demo.utils;
  */
 public class ObjUtils {
 
+    private ObjUtils() {
+        throw new IllegalStateException("Utility class");
+    }
+
 
 }
