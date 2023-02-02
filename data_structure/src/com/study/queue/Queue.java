@@ -31,7 +31,6 @@ public class Queue {
         this.front = 0;
         arr = new int[maxSize];
     }
-    // TODO: 2023/1/13 队列操作
 
     /**
      * 添加数据
@@ -42,11 +41,7 @@ public class Queue {
             System.out.println("队列已满");
             return;
         }
-        if (rear + 1 == maxSize) {
-            rear = (rear + 1) % maxSize;
-        }
-        arr[rear] = num;
-        rear++;
+        rear = (rear + 1) % maxSize;
     }
 
     /**
@@ -57,7 +52,7 @@ public class Queue {
             throw new RuntimeException("队列为空");
         }
         int num = arr[front];
-        front++;
+        front = (front + 1) % maxSize;
         return num;
     }
 
