@@ -1,1 +1,16 @@
 抽象工厂Abstract-Factory
+1.概念
+在工厂模式的基础上，对组成工厂，组成产品的各个零件及其本身进行抽象；这样client就不用关心零件的具体实现，只需调用api即可
+2.组成
+    1.抽象
+        a.抽象工厂(Factory)
+        b.抽象产品(Page)
+        c.抽象零件(Item,Tray,Link)
+    2.具体实现
+        a.工厂实现(DemoFactory)
+        b.产品实现(DemoPage)
+        c.零件实现(DemoItem,DemoTray,DemoLink)
+    3.调用者
+        client
+优点：易于添加工厂实现类。
+缺点：新零件添加难度提升。

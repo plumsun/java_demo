@@ -151,23 +151,23 @@ public class AlgorithmDemo {
                     builder1.deleteCharAt(i);
                     builder2.deleteCharAt(i);
                 }
-                if(all.equals(split[i])){
+                if (all.equals(split[i])) {
                     builder2.deleteCharAt(i);
-                    map.put(i,all);
+                    map.put(i, all);
                 }
             }
 
         }
         Set<Integer> set = map.keySet();
         int size = set.size();
-        if(size==0){
+        if (size == 0) {
             return builder1.toString().equals(builder2.toString());
         }
         set.forEach(i -> {
-                    if (i == p.length() - 1&&size==1) {
+                    if (i == p.length() - 1 && size == 1) {
                         builder1.toString().startsWith(builder2.toString());
                     }
-                    if (i == 0&&size==1) {
+                    if (i == 0 && size == 1) {
                         builder1.toString().endsWith(builder2.toString());
                     }
                     if (i < p.length() - 1 && i > 0) {
@@ -180,23 +180,23 @@ public class AlgorithmDemo {
     }
 
     @Test
-    public void isValid(){
+    public void isValid() {
         boolean valid = isValid("(){}");
         System.out.println("valid = " + valid);
     }
 
     public boolean isValid(String s) {
-        if(s.isEmpty())
+        if (s.isEmpty())
             return true;
-        Stack<Character> stack=new Stack<>();
-        for(char c:s.toCharArray()){
-            if(c=='(')
+        Stack<Character> stack = new Stack<>();
+        for (char c : s.toCharArray()) {
+            if (c == '(')
                 stack.push(')');
-            else if(c=='{')
+            else if (c == '{')
                 stack.push('}');
-            else if(c=='[')
+            else if (c == '[')
                 stack.push(']');
-            else if(stack.empty()||c!=stack.pop())
+            else if (stack.empty() || c != stack.pop())
                 return false;
         }
         return stack.empty();
