@@ -12,6 +12,7 @@ public class ArrayToQueueDemo {
         queue.add(2);
         queue.add(3);
         int i = queue.get();
+        System.out.println("i = " + i);
         queue.add(4);
         queue.showQueue();
         int size = queue.size();

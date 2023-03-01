@@ -1,8 +1,10 @@
 package com.study.queue;
 
 /**
+ * The type Queue.
+ *
  * @author LiHaoHan
- * @date 2023/1/13
+ * @date 2023 /1/13
  */
 public class Queue {
     /**
@@ -25,6 +27,11 @@ public class Queue {
      */
     private int front;
 
+    /**
+     * Instantiates a new Queue.
+     *
+     * @param maxSize the max size
+     */
     public Queue(int maxSize) {
         this.maxSize = maxSize;
         this.rear = 0;
@@ -34,6 +41,8 @@ public class Queue {
 
     /**
      * 添加数据
+     *
+     * @param num the num
      */
     public void add(int num) {
         boolean full = isFull();
@@ -46,6 +55,8 @@ public class Queue {
 
     /**
      * 取出数据
+     *
+     * @return the int
      */
     public int get() {
         if (isEmpty()) {
@@ -67,6 +78,8 @@ public class Queue {
 
     /**
      * 获取当前容器有效数据个数
+     *
+     * @return the int
      */
     public int size() {
         return (rear + maxSize - front) % maxSize;
@@ -74,6 +87,8 @@ public class Queue {
 
     /**
      * 判断容器是否为空
+     *
+     * @return the boolean
      */
     public boolean isEmpty() {
         return rear == front;
@@ -81,6 +96,8 @@ public class Queue {
 
     /**
      * 判断容器是否满
+     *
+     * @return the boolean
      */
     public boolean isFull() {
         return (rear + 1) % maxSize == front;
