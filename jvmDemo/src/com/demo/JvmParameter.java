@@ -21,6 +21,6 @@ public class JvmParameter {
 
          */
         System.out.println("start.....");
-        Thread.sleep(Integer.MAX_VALUE);
+        // Thread.sleep(Integer.MAX_VALUE);
     }
 }

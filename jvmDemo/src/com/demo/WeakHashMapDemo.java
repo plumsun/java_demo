@@ -17,16 +17,16 @@ public class WeakHashMapDemo {
             当容器中某个元素的key无效后，被gc回收了
             那在容器中对应的键值对就会被清除
          */
-        WeakHashMap<WeakReference<Object>,String> map = new WeakHashMap<>();
+        WeakHashMap<WeakReference<Object>, String> map = new WeakHashMap<>();
         Object o = new Object();
-        //弱引用
+        // 弱引用
         WeakReference<Object> reference = new WeakReference<>(o);
-        map.put(reference,"弱引用");
-        System.out.println("map = "+map);
+        map.put(reference, "弱引用");
+        System.out.println("map = " + map);
 
-        //置空对象
-        o=null;
-        reference=null;
+        // 置空对象
+        o = null;
+        reference = null;
         System.gc();
 
         System.out.println("map = " + map);

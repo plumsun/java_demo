@@ -28,15 +28,15 @@ public class UnableCreateThreadDemo {
     public static void main(String[] args) {
         System.out.println("test() = " + test("hello", "11"));
         i++;
-        // while (true){
-        //     new Thread(()->{
-        //         try {
-        //             Thread.sleep(Integer.MAX_VALUE);
-        //         } catch (InterruptedException e) {
-        //             e.printStackTrace();
-        //         }
-        //     }).start();
-        // }
+        while (true){
+            new Thread(()->{
+                try {
+                    Thread.sleep(Integer.MAX_VALUE);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }).start();
+        }
     }
 
 }

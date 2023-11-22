@@ -201,5 +201,101 @@ public class AlgorithmDemo {
         }
         return stack.empty();
     }
+
+    /**
+     * 最长回文子串
+     * 给你一个字符串 s，找到 s 中最长的回文子串。
+     * 如果字符串的反序与原始字符串相同，则该字符串称为回文字符串。
+     * 条件：
+     * 1、字符串反序与原始字符串相同
+     * 2、字符串长度最长
+     */
+    @Test
+    public void longestPalindromeTest() {
+        String bbaab = longestPalindrome("baaaavab");
+        System.out.println(bbaab);
+    }
+
+
+    public String longestPalindrome(String s) {
+        String num = "";
+        int length = s.length();
+        int left;
+        int right;
+        for (int i = 0; i < length; i++) {
+            // 针对给定字符长度为偶数的情况
+            left = i;
+            right = i + 1;
+            String num1 = getNum(s, length, left, right);
+
+            // 针对给定字符长度为奇数的情况
+            right = i;
+            String num2 = getNum(s, length, left, right);
+            String num3 = num1.length() > num2.length() ? num1 : num2;
+            num = num3.length() > num.length() ? num3 : num;
+        }
+        return num;
+    }
+
+    private static String getNum(String s, int length, int left, int right) {
+        String str = "";
+        while (left >= 0 && right <= length - 1 && (s.charAt(left) == (s.charAt(right)))) {
+            String substring = s.substring(left, right + 1);
+            str = substring.length() > str.length() ? substring : str;
+            --left;
+            ++right;
+        }
+        return str;
+    }
+
+    /**
+     * 动态规划算法
+     * 1、将整体任务进行拆分，分为一个个小的任务，每个小任务的计算依赖于上一个任务的结果
+     * 2、通过填表的方式可视化小任务的结果，并推出规律
+     *
+     * @param s
+     * @return
+     */
+
+
+    /**
+     * 回文子串
+     * 给你一个字符串 s ，请你统计并返回这个字符串中 回文子串 的数目。
+     * 回文字符串 是正着读和倒过来读一样的字符串。
+     * 子字符串 是字符串中的由连续字符组成的一个序列。
+     * 具有不同开始位置或结束位置的子串，即使是由相同的字符组成，也会被视作不同的子串。
+     */
+    @Test
+    public void countSubstringsTest() {
+        int num = countSubstrings("baaaavab");
+        System.out.println(num);
+    }
+
+    public int countSubstrings(String s) {
+        int num = 0;
+        int length = s.length();
+        int left;
+        int right;
+        for (int i = 0; i < length; i++) {
+            // 针对给定字符长度为偶数的情况
+            left = i;
+            right = i + 1;
+            num = getNum(s, num, length, left, right);
+
+            // 针对给定字符长度为奇数的情况
+            right = i;
+            num = getNum(s, num, length, left, right);
+        }
+        return num;
+    }
+
+    private static int getNum(String s, int num, int length, int left, int right) {
+        while (left >= 0 && right <= length - 1 && (s.charAt(left) == (s.charAt(right)))) {
+            --left;
+            ++right;
+            ++num;
+        }
+        return num;
+    }
 }
 
