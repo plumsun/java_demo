@@ -297,5 +297,90 @@ public class AlgorithmDemo {
         }
         return num;
     }
+
+
+    /**
+     * 给定一个长度为 n 的整数数组 height 。有 n 条垂线，第 i 条线的两个端点是 (i, 0) 和 (i, height[i]) 。
+     * 找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。
+     * 返回容器可以储存的最大水量。
+     */
+    @Test
+    public void maxAreaTest() {
+        String str1 ="abc";
+        String str2 = "ab";
+        String str3 = "abv";
+        int num = 0;
+        String target = str1.length()>str2.length()?(str1.length()>str3.length()?str3:str1):(str2.length()>str3.length()?str3:str2);
+        if(str1.equals(str2) && str1.equals(str3)){
+        }
+        if(str1.contains(target)){
+            String tem = str1;
+            while (tem.matches(target)){
+                num++;
+                tem = tem.substring(tem.indexOf(target),tem.length());
+            }
+        }
+        if(str2.contains(target)){
+            num++;
+        }
+        if(str3.contains(target)){
+            num++;
+        }
+    }
+
+    /**
+     * 暴力解法，求出每个数字到其他数字所围成的图形面积
+     * 再进行比较求出最大值
+     *
+     * @param height
+     * @return
+     */
+    public int maxArea(int[] height) {
+        int i = 0, j = height.length - 1, res = 0;
+        while(i < j) {
+            res = height[i] < height[j] ?
+                    Math.max(res, (j - i) * height[i++]):
+                    Math.max(res, (j - i) * height[j--]);
+        }
+        return res;
+    }
+
+    /**
+     * 「HTML 实体解析器」 是一种特殊的解析器，它将 HTML 代码作为输入，并用字符本身替换掉所有这些特殊的字符实体。
+     */
+    public String entityParser(String text) {
+        int l = 0, r = 0;
+        StringBuilder sb = new StringBuilder();
+        while (r < text.length()) {
+            char ch = text.charAt(r++);
+            if (ch != '&' && r - l == 1) {
+                // 如果当前左右指针中字符不是&，就当前字符添加至目标中，并将左指针向右移动
+                sb.append(ch);
+                l++;
+            } else if (ch == ';' && r - l > 1) {
+                // 如果当前左右指针中的字符是以 ;为结尾，就将当前字符截取并判断截取后的字符是否属于字符实体，如果是就替换并添加至目标
+                // 无论是或者不是，都要移动左指针到 ;的后一位，
+                String s = text.substring(l, r);
+                sb.append(map.getOrDefault(s, s));
+                l = r;
+            } else if (ch == '&' && r - l > 1) {
+                // 当前字符是 & 并且，双指针不处于同一位置，也就是 && 相连的情况
+                // 将第一个 & 添加到目标中，并将l向右移动至最后一个 & 的后一个位置
+                sb.append(text, l, r - 1);
+                l = r - 1;
+            }
+        }
+        if (r > l) sb.append(text, l, r);
+        return sb.toString();
+    }
+    static Map<String, String> map = new HashMap<>();
+    static {
+        map.put("&quot;", "\"");
+        map.put("&apos;", "'");
+        map.put("&amp;", "&");
+        map.put("&gt;", ">");
+        map.put("&lt;", "<");
+        map.put("&frasl;", "/");
+    }
 }
 
