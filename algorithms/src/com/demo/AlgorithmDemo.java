@@ -2,7 +2,13 @@ package com.demo;
 
 import org.junit.Test;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.Stack;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -306,24 +312,24 @@ public class AlgorithmDemo {
      */
     @Test
     public void maxAreaTest() {
-        String str1 ="abc";
+        String str1 = "abc";
         String str2 = "ab";
         String str3 = "abv";
         int num = 0;
-        String target = str1.length()>str2.length()?(str1.length()>str3.length()?str3:str1):(str2.length()>str3.length()?str3:str2);
-        if(str1.equals(str2) && str1.equals(str3)){
+        String target = str1.length() > str2.length() ? (str1.length() > str3.length() ? str3 : str1) : (str2.length() > str3.length() ? str3 : str2);
+        if (str1.equals(str2) && str1.equals(str3)) {
         }
-        if(str1.contains(target)){
+        if (str1.contains(target)) {
             String tem = str1;
-            while (tem.matches(target)){
+            while (tem.matches(target)) {
                 num++;
-                tem = tem.substring(tem.indexOf(target),tem.length());
+                tem = tem.substring(tem.indexOf(target), tem.length());
             }
         }
-        if(str2.contains(target)){
+        if (str2.contains(target)) {
             num++;
         }
-        if(str3.contains(target)){
+        if (str3.contains(target)) {
             num++;
         }
     }
@@ -337,9 +343,9 @@ public class AlgorithmDemo {
      */
     public int maxArea(int[] height) {
         int i = 0, j = height.length - 1, res = 0;
-        while(i < j) {
+        while (i < j) {
             res = height[i] < height[j] ?
-                    Math.max(res, (j - i) * height[i++]):
+                    Math.max(res, (j - i) * height[i++]) :
                     Math.max(res, (j - i) * height[j--]);
         }
         return res;
@@ -373,7 +379,9 @@ public class AlgorithmDemo {
         if (r > l) sb.append(text, l, r);
         return sb.toString();
     }
+
     static Map<String, String> map = new HashMap<>();
+
     static {
         map.put("&quot;", "\"");
         map.put("&apos;", "'");
@@ -381,6 +389,31 @@ public class AlgorithmDemo {
         map.put("&gt;", ">");
         map.put("&lt;", "<");
         map.put("&frasl;", "/");
+    }
+
+    @Test
+    public void convert() {
+        String s = "PAYPALISHIRING";
+        int numRows = 3;
+        List<StringBuilder> rows = new ArrayList<StringBuilder>();
+        for (int i = 0; i < numRows; i++) {
+            rows.add(new StringBuilder());
+        }
+        int i = 0, flag = -1;
+        for (char c : s.toCharArray()) {
+            rows.get(i).append(c);
+            // 0 3 -1
+            // 1 3 1
+            // 2 3 1
+            // 1 3 -1
+            // 0 3 -1
+            if (i == 0 || i == numRows - 1) {
+                flag = -flag;
+            }
+            i += flag;
+        }
+        StringBuilder res = new StringBuilder();
+        for (StringBuilder row : rows) res.append(row);
     }
 }
 
