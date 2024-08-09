@@ -1,6 +1,5 @@
 package com.demo;
 
-import java.net.ServerSocket;
 import java.util.HashMap;
 
 public class Demo {
@@ -13,12 +12,11 @@ public class Demo {
     }
 
     public static void main(String[] args) {
-        ServerSocket
         int a =1,b=3;
         System.out.println("a = " + a+b);
         System.out.println("a = " + a*b);
         System.out.println("a = " + a/b);
-        System.out.println("a = " + a-b);
+//        System.out.println("a = " + a-b);
         Documents documents = new Documents("1");
         test(documents);
     }

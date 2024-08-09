@@ -65,7 +65,7 @@ public class SinglyLinkedList {
     }
 
     public int size() {
-        MyNode next = node.getNext();
+        MyNode next = head.getNext();
         int num = 0;
         while (next != null) {
             num++;
@@ -117,7 +117,7 @@ public class SinglyLinkedList {
     }
 
     public MyNode ValueOf(MyNode head, int index) {
-        MyNode temp = new MyNode();                                                                                                                                                                       z
+        MyNode temp = new MyNode();
         if (head.getNext() == null) {
             return null;
         }
